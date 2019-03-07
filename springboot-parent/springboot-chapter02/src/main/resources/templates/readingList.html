@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reading List</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+	<h2>Your Reading List</h2>
+	
+	<table border="1">
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>ISBN</th>
+			<th>Description</th>
+		</tr>
+		<#if books?? && (books?size > 0)>
+			<#list books as book>
+				<tr>
+					<td>${book.title}</td>
+					<td>${book.author}</td>
+					<td>${book.isbn}</td>
+					<td>${book.description}</td>
+				</tr>
+			</#list>
+		</#if>
+		
+	</table>	
+
+	
+	<hr/>
+	<h3>Add a book</h3>
+	<form method="POST" action='/readingList'>
+		<label for="title">Title:</label>
+		<input type="text" name="title" size="50"></input><br/>
+		<label for="author">Author:</label>
+		<input type="text" name="author" size="50"></input><br/>
+		<label for="isbn">ISBN:</label>
+		<input type="text" name="isbn" size="15"></input><br/>
+		<label for="description">Description:</label><br/>
+		<textarea name="description" cols="80" rows="5"></textarea><br/>
+		<input type="submit"/>
+	</form>
+</body>
+</html>
